@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <h2>résultats</h2>
+  <ul>
+    {% for city in object_list %}
+    <li>
+      {{ city.product_name }}, {{ city.product_id }}
+    </li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}

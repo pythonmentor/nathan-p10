@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <br><br><br>
+          <h1 class="mt-2">Django People</h1>
+        {% for prod in products %}
+          {{ prod.product_name }} <br>
+          {{ prod.product_id }} <br>
+          {{ prod.description }} <br>
+          {{ prod.category_id_id }} <br>
+          {{ prod.nutriscore }} <br>
+          {{ prod.link }} <br><br>
+          **************************** <br>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock content %}
