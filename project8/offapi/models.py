@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # This models create the database based on the OFF api data ready to be populate
 
@@ -33,7 +34,7 @@ class Product(models.Model):
 # penser a le mettre (porductsaved) dans l'application qui va enregister une recherche 
 
 class ProductSaved(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='+')
     sub_id = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='+')
 

@@ -8,7 +8,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('email')
+            username = form.cleaned_data.get('username')
             messages.success(request, f'Le compte est créé pour {username}.')
             return redirect('home') 
     else:
