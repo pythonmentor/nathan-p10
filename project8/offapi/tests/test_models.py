@@ -1,6 +1,6 @@
 from django.test import TestCase
 from ..models import Category, Store, Product, ProductSaved
-from django.contrib.auth.models import User
+from authentification.models import User
 
 
 # models test
