@@ -24,7 +24,7 @@ from addfav import views as add_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', blog.home),
+    path('', blog.home, name='db'),
     path('index/', blog.index),
     path('base/', blog.base, name='home'),
     path('register/', auth.register, name='register'),
@@ -34,3 +34,6 @@ urlpatterns = [
     path('rien/', add_views.add),
     path('nop/', add_views.favorite, name='favorite'),
     ]
+
+admin.site.site_header = 'Project 8 Admin Panel'
+admin.site.site_title = 'Project 8'

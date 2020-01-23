@@ -1,20 +1,80 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <br><br><br>
-          <h1 class="mt-2">Django People</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <br><br><br>
+      <h1 class="mt-2">Django People</h1>
+      <style>
+        .resultat {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .box {
+          position: relative;
+          display: block;
+          flex-direction: column;
+          box-sizing: border-box;
+          width: 130px;
+        }
+
+        .parent {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .texte {
+          clear: both;
+          position: absolute;
+          left: 0;
+          width: inherit;
+          text-align: center;
+        }
+
+        .image1 {
+          position: absolute;
+          top: 0;
+          left: 70px;
+          border: 1px red solid;
+          z-index: 2;
+        }
+
+        .image2 {
+          position: absolute;
+          top: 30px;
+          left: 0px;
+          border: 1px green solid;
+          z-index: 1;
+        }
+      </style>
+      <div class="resultat">
         {% for prod in products %}
-          {{ prod.product_name }} <br>
-          {{ prod.product_id }} <br>
-          {{ prod.description }} <br>
-          {{ prod.category_id_id }} <br>
-          {{ prod.nutriscore }} <br>
-          {{ prod.link }} <br><br>
-          **************************** <br>
-        {% endfor %}
+        <div class="box">
+          <div class="parent">
+            <img class="image1" height="50" width="50"
+              src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg" />
+            <img class="image2" src="https://placehold.it/100" />
+          </div>
+          <div class="texte">{{ prod.product_name }} <br><i class="far fa-save "></i> Sauvegarder</div>
         </div>
+        {% endfor %}
       </div>
+      <!-- {% for prod in products %}
+      {{ prod.product_name }} <br>
+      <div style="position: relative; left: 0; top: 0;">
+        <img src="{{ prod.image }}" class="fishes">
+        <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg" height="30" class="fish">
+      </div>
+      {{ prod.product_id }} <br>
+      {{ prod.description }} <br>
+      {{ prod.category_id_id }} <br>
+      {{ prod.nutriscore }} <br>
+      {{ prod.link }} <br><br>
+      **************************** <br>
+      {% endfor %} -->
     </div>
+  </div>
+</div>
 {% endblock content %}

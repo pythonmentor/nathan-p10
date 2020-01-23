@@ -56,7 +56,9 @@ class DataCleaner:
                 'stores',
                 'ingredients_text',
                 'nutrition_grade_fr',
-                'id']
+                'id',
+                'image_front_url',
+                'image_front_small_url']
         error = False
         self.data2 = {}
         for key in keys:
@@ -66,7 +68,10 @@ class DataCleaner:
                     error = True
                 else:
                     value = product[key].replace('\n', ' ')
-                    value = value.replace("_", "")
+                    if key == "image_front_small_url" or key == "image_front_url":
+                        pass
+                    else:
+                        value = value.replace("_", "")
                     self.data2[key] = html.unescape(value)
             else:
                 error = True

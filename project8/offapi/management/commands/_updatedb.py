@@ -15,7 +15,9 @@ class Storedb:
                     category_id=Category.objects.get(name="Boissons gazeuses"),
                     link=data["url"],
                     description=data["ingredients_text"],
-                    nutriscore=data["nutrition_grade_fr"]
+                    nutriscore=data["nutrition_grade_fr"],
+                    mini_image=data["image_front_small_url"],
+                    image=data["image_front_url"]
                     )
         b.save()
         for store in stores_list:
