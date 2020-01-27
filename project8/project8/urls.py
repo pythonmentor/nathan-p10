@@ -20,6 +20,7 @@ from authentification import views as auth
 from search import views as search_views
 from django.contrib.auth import views as auth_views
 from addfav import views as add_views
+from offapi import views as offapi_views
 
 
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
     path('search/', search_views.SearchResultsView.as_view(), name='research'),
     path('rien/', add_views.add),
     path('nop/', add_views.favorite, name='favorite'),
+    path('coca/', offapi_views.product, name='produit'),
     ]
 
 admin.site.site_header = 'Project 8 Admin Panel'
