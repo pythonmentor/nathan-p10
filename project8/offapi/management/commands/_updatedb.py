@@ -17,7 +17,8 @@ class Storedb:
                     description=data["ingredients_text"],
                     nutriscore=data["nutrition_grade_fr"],
                     mini_image=data["image_front_small_url"],
-                    image=data["image_front_url"]
+                    image=data["image_front_url"],
+                    nutriments=data["nutriments"]
                     )
         b.save()
         for store in stores_list:

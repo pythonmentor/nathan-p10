@@ -16,7 +16,7 @@ class ApiRetriever:
                          'tagtype_0': 'categories',
                          'tag_contains_0': 'contains',
                          'tag_0': '',
-                         'page_size': '10'}
+                         'page_size': '1'}
 
     def get_data(self, category):
         """this method send a request to get the data
@@ -58,7 +58,8 @@ class DataCleaner:
                 'nutrition_grade_fr',
                 'id',
                 'image_front_url',
-                'image_front_small_url']
+                'image_front_small_url',
+                'nutriments']
         error = False
         self.data2 = {}
         for key in keys:
@@ -67,10 +68,11 @@ class DataCleaner:
                 if product[key] == "":
                     error = True
                 else:
-                    value = product[key].replace('\n', ' ')
-                    if key == "image_front_small_url" or key == "image_front_url":
+                    value = product[key]
+                    if key == "image_front_small_url" or key == "image_front_url" or key == "nutriments":
                         pass
                     else:
+                        value = value.replace('\n', ' ')
                         value = value.replace("_", "")
                     self.data2[key] = html.unescape(value)
             else:
