@@ -28,6 +28,7 @@ class Product(models.Model):
     nutriscore = models.CharField(max_length=2)
     mini_image = models.TextField(null=True)
     image = models.TextField(null=True)
+    nutriments = models.TextField(null=True)
     stores = models.ManyToManyField(Store, related_name="productes")
 
     def __str__(self):
