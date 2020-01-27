@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- About Section -->
+<header class="page-section bg-primary"
+    style="background-image: url(https://static.openfoodfacts.org/images/products/505/399/011/9004/front_fr.86.full.jpg); background-size: cover;"
+    id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-black mt-0">We've got what you need!</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Services Section -->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 text-center">
+                <div class="mt-5">
+                    <img class="image1" height="50" width="50" src="{% static 'offapi/img/nutriscore-b.svg' %}" />
+                    <i class="fas fa-4x fa-gem text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Nutriscore</h3>
+                    <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Repères nutritionnels pour 100 g:</h3>
+                    <ul class="text-muted mb-0" style="list-style-type:none; text-align: left;">
+                        <li> {{ fat }} g Matières grasses/Lipides en faible quantité </li>
+                        <li> {{ satured_fat }} g Acides gras saturés en faible quantité</li>
+                        <li> {{ sugar }} g Sucres en quantité élevée </li>
+                        <li> {{ salt }} g Sel en faible quantité</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-heart text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">liens vers openfoodfacts</h3>
+                    <a class="text-muted mb-0" target="_blank" href="#">liens vers openfoodfacts</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
