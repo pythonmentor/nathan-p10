@@ -3,3 +3,5 @@ run.py
 database.py
 .coverage
 htmlcov
+startboot*
+*.json
