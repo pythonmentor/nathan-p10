@@ -2,7 +2,7 @@ from django.test import TestCase
 from authentification.models import User
 
 
-class Test_views(TestCase):
+class TestViews(TestCase):
     def setUp(self):
         test_user1 = User.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK', email='rien@g.com')
         test_user1.save()

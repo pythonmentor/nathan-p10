@@ -7,6 +7,7 @@ def home(request):
     context = {'products':Product.objects.all(), 
                 'title': 'db'
                 }
+
     return render(request, 'blog/db.html', context)
 
 def index(request):
