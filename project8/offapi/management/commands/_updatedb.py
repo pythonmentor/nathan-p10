@@ -1,5 +1,8 @@
+import json
+
 from ...models import Product, Category, Store
 from django.db import IntegrityError
+
 
 
 class Storedb:
@@ -9,7 +12,6 @@ class Storedb:
         """ this method insert the products' items into the 'Product' 
             table, it require the product list as a first argument
             and the store list as the second argument"""
-
         b = Product(product_name=data["product_name_fr"],
                     product_id=data["id"],
                     category_id=Category.objects.get(name="Boissons gazeuses"),
@@ -18,7 +20,7 @@ class Storedb:
                     nutriscore=data["nutrition_grade_fr"],
                     mini_image=data["image_front_small_url"],
                     image=data["image_front_url"],
-                    nutriments=data["nutriments"]
+                    nutriments=json.dumps(data["nutriments"])
                     )
         b.save()
         for store in stores_list:

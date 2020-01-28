@@ -1,22 +1,22 @@
-from django.shortcuts import render
+import json
+
+from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 from offapi.models import Product
-import ast
 
-def home(request):
-    """ Exemple de page non valide au niveau HTML pour que l'exemple soit concis """
-    f = Product.objects.values()
-    f = list(f)
-    return render(request, 'base.html', {'context':f})
 
-def product(request):
-    data = Product.objects.get(product_id = 3468570116601)
-    nutriments = ast.literal_eval(data.nutriments) 
-    context = {'product': data, 
+def product(request, pk):
+
+    try:
+        data = Product.objects.get(product_id = pk)
+        data.nutriments = json.loads(data.nutriments)
+        satfat = data.nutriments['saturated-fat_100g']
+        nutriscore = "https://static.openfoodfacts.org/images/misc/nutriscore-" + data.nutriscore +".svg" 
+        context = {'product': data, 
                 'title': 'Produit',
-                'nutriscore': 'offapi/img/nutriscore-b.svg',
-                'sugar': nutriments['sugars_100g'],
-                'satured_fat': nutriments['saturated-fat_100g'],
-                'fat': nutriments['fat_100g'],
-                'salt': nutriments['salt_100g']
+                'nutriscore': nutriscore,
+                'fat': satfat
                 }
-    return render(request, 'offapi/product.html', context)
+        return render(request, 'offapi/product.html', context)
+    except ObjectDoesNotExist:
+        return redirect('/')

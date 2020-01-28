@@ -69,8 +69,12 @@ class DataCleaner:
                     error = True
                 else:
                     value = product[key]
-                    if key == "image_front_small_url" or key == "image_front_url" or key == "nutriments":
-                        pass
+                    if key == "image_front_small_url":
+                        value = value.replace('200.jpg', '100.jpg')
+                    elif key == "image_front_url":
+                        value = value.replace('400.jpg', 'full.jpg')
+                    elif key == "nutriments":
+                        pass                          
                     else:
                         value = value.replace('\n', ' ')
                         value = value.replace("_", "")
