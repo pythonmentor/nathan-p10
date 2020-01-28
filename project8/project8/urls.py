@@ -25,16 +25,17 @@ from offapi import views as offapi_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', blog.home, name='db'),
-    path('index/', blog.index),
-    path('base/', blog.base, name='home'),
+    path('', blog.index, name='home'),
+    path('index/', blog.home, name='db'),
     path('register/', auth.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='authentification/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='authentification/logout.html'), name='logout'),
-    path('search/', search_views.SearchResultsView.as_view(), name='research'),
+    path('search/', search_views.search, name='research'),
+    path('search/<int:pk>/', search_views.substitute, name='substitut'),
+    path('search/<int:pk>/<int:pk2>/', add_views.favorite, name='add_favorite'),
     path('rien/', add_views.add),
-    path('nop/', add_views.favorite, name='favorite'),
-    path('coca/', offapi_views.product, name='produit'),
+    path('favorite/', add_views.display_favorite, name='favorite'),
+    path('product/<int:pk>/', offapi_views.product, name='product'),
     ]
 
 admin.site.site_header = 'Project 8 Admin Panel'
