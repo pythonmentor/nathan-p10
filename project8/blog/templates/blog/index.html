@@ -14,9 +14,9 @@
       <div class="col-lg-8 align-self-baseline">
         <p class="text-white-75 font-weight-light mb-5">Trouvez un produit de substitution pour ceux que vous
           consommez tous les jours.</p>
-        <form class="example" action="#">
-          <input type="text" placeholder="Search..." name="search">
-          <button type="search" name="q">Chercher</button>
+        <form class="example" action="{% url 'research' %}" method="get">
+          <input type="text" placeholder="Search..." name="q">
+          <button type="search">Chercher</button>
         </form>
       </div>
     </div>

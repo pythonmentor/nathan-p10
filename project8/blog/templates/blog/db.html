@@ -1,80 +1,46 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% block content %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <br><br><br>
-      <h1 class="mt-2">Django People</h1>
-      <style>
-        .resultat {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        .box {
-          position: relative;
-          display: block;
-          flex-direction: column;
-          box-sizing: border-box;
-          width: 130px;
-        }
-
-        .parent {
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        .texte {
-          clear: both;
-          position: absolute;
-          left: 0;
-          width: inherit;
-          text-align: center;
-        }
-
-        .image1 {
-          position: absolute;
-          top: 0;
-          left: 70px;
-          border: 1px red solid;
-          z-index: 2;
-        }
-
-        .image2 {
-          position: absolute;
-          top: 30px;
-          left: 0px;
-          border: 1px green solid;
-          z-index: 1;
-        }
-      </style>
-      <div class="resultat">
-        {% for prod in products %}
-        <div class="box">
-          <div class="parent">
-            <img class="image1" height="50" width="50"
-              src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg" />
-            <img class="image2" src="https://placehold.it/100" />
-          </div>
-          <div class="texte">{{ prod.product_name }} <br><i class="far fa-save "></i> Sauvegarder</div>
-        </div>
-        {% endfor %}
+<!-- Masthead -->
+<header class="header-product" id="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-white mt-0">We've got what you need!</h2>
+        <hr class="divider light my-4">
+        <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running
+          in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!
+        </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
       </div>
-      <!-- {% for prod in products %}
-      {{ prod.product_name }} <br>
-      <div style="position: relative; left: 0; top: 0;">
-        <img src="{{ prod.image }}" class="fishes">
-        <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg" height="30" class="fish">
-      </div>
-      {{ prod.product_id }} <br>
-      {{ prod.description }} <br>
-      {{ prod.category_id_id }} <br>
-      {{ prod.nutriscore }} <br>
-      {{ prod.link }} <br><br>
-      **************************** <br>
-      {% endfor %} -->
     </div>
   </div>
+</header>
+
+<div class="container">
+  <section>
+    <h1 class="mt-2">Django People</h1><br><br><br>
+    <div class="row justify-content-center">
+
+      {% for prod in products %}
+      <div class="col-lg-4 col-md-12">
+        <div class="box">
+          <div class="parent">
+            {% with 'blog/img/nutriscore-'|add:prod.nutriscore|add:'.svg' as image_static %}
+            <img class="image1" id="image1" src="{% static image_static %}" />
+            {% endwith %}
+            <div class="image2">
+              <img src="{{ prod.mini_image }}" />
+            </div>
+          </div>
+          <div class="texte" style="text-align: center">{{ prod.product_name }} <br><i class="far fa-save "></i>
+            Sauvegarder</div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
 </div>
+
 {% endblock content %}
