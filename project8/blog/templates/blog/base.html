@@ -49,7 +49,7 @@
                     <!-- ajouté une condition que si un user est loggué alors affiche ca  -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#"><i class="far fa-user fa-2x"></i></a>
+                        <a class="nav-link js-scroll-trigger" href="{% url 'profil' %}"><i class="far fa-user fa-2x"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{% url 'favorite' %}"><i class="fas fa-carrot fa-2x"></i></a>
