@@ -3,9 +3,6 @@ from offapi.models import ProductSaved, Product
 from authentification.models import User
 
 # Create your views here.
-def add(request):
-    return render(request, 'addfav/add.html')
-
 def favorite(request, pk, pk2):
     b = ProductSaved(user_id = User.objects.get(username='admin'),
                     product_id = Product.objects.get(product_id = pk),
