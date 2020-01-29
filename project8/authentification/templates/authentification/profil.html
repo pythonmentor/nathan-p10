@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- About Section -->
+<header class="header-product" id="about">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center"><br><br>
+            <h1 class="text-black "> Ahoy <br><b> {{ user.username }} </b></h1>
+        </div>
+    </div>
+</header>
+
+<!-- Services Section -->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="text-center">
+                <div class=" border border-dark rounded p-1 mt-5">
+                    <h2>{{ user }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
