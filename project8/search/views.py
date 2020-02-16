@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SearchForm
-from offapi.models import Product
+from offapi.models import Product, Category
 from django.views.generic import FormView, ListView
 
 # Create your views here.
@@ -25,7 +25,9 @@ def search(request):
 
 def substitute(request, pk):
     product = Product.objects.get(product_id=pk)
-    substitute = Product.objects.filter(nutriscore__lt=product.nutriscore) #rajouté en fonction de la category
+    cat = product.category_id.values_list('id', flat=True)
+    print(cat)
+    substitute = Product.objects.all().filter(nutriscore__lt=product.nutriscore, category_id__in= cat) #rajouté en fonction de la category
 
     context = {'products':substitute, 
                 'title': 'Substitue',

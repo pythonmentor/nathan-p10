@@ -16,7 +16,7 @@ class ApiRetriever:
                          'tagtype_0': 'categories',
                          'tag_contains_0': 'contains',
                          'tag_0': '',
-                         'page_size': '1'}
+                         'page_size': '250'}
 
     def get_data(self, category):
         """this method send a request to get the data
