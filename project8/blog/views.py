@@ -15,3 +15,6 @@ def index(request):
 
 def base(request):
     return render(request, 'blog/base.html')
+
+def legal(request):
+    return render(request, 'blog/legal.html')
