@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Masthead -->
+
+{% if substitut %}
+
+<header class="page-section bg-primary"
+  style="background-image: url({{ previous_product.image }}); background-size: cover; background-position: 50%;"
+  id="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-black mt-0"> <b> {{ previous_product.product_name }} </b></h2>
+      </div>
+    </div>
+  </div>
+</header>
+{% else %}
+
+<header class="header-product" id="about">
+</header>
+{% endif %}
+
+<div class="container">
+  <section>
+    <h1 class="mt-2">{{ big_title }}</h1><br><br><br>
+    <div class="row justify-content-center">
+
+      {% for prod in products %}
+      <div class="col-lg-4 col-md-12">
+        <div class="box">
+          <div class="parent">
+            {% with 'blog/img/nutriscore-'|add:prod.nutriscore|add:'.svg' as image_static %}
+            <img class="image1" id="image1" src="{% static image_static %}" />
+            {% endwith %}
+            <div class="image2">
+              <img src="{{ prod.mini_image }}" />
+            </div>
+          </div>
+
+          {% if substitut %}
+          
+          <div class="texte" style="text-align: center"><a href="/product/{{ prod.product_id }}">{{ prod.product_name }}
+            </a>
+            <br><a href="{{ prod.product_id }}"><i class="far fa-save "></i>
+              Sauvegarder </a>
+            {% else %}
+
+            <div class="texte" style="text-align: center"><a
+                href="{{ prod.product_id }}">{{ prod.product_name }} </a>
+            {% endif %}
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+  </section>
+</div>
+
+{% endblock content %}
