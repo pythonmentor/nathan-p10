@@ -12,8 +12,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         Category.objects.get_or_create(name="Boissons gazeuses")
         api = offapi.ApiRetriever()
-        data = api.get_data('Boissons gazeuses')
+        data = api.get_data('Produits à tartiner sucrés')
         for it in data:
             db = update.Storedb()
-            liste = db.insert_store(it)
-            db.insert_product(it, liste)
+            stores = db.insert_store(it)
+            categories = db.insert_category(it)
+            db.insert_product(it, stores, categories)

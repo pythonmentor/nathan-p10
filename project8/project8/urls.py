@@ -35,7 +35,8 @@ urlpatterns = [
     path('search/<int:pk>/', search_views.substitute, name='substitut'),
     path('search/<int:pk>/<int:pk2>/', add_views.favorite, name='add_favorite'),
     path('favorite/', add_views.display_favorite, name='favorite'),
-    path('product/<int:pk>/', offapi_views.product, name='product')
+    path('product/<int:pk>/', offapi_views.product, name='product'),
+    path('legal/', blog.legal, name='legal')
     ]
 
 admin.site.site_header = 'Project 8 Admin Panel'

@@ -5,7 +5,7 @@ from django.conf import settings
 # This models create the database based on the OFF api data ready to be populate
 
 class Category(models.Model):
-    name = models.CharField(max_length=60)
+    name = models.CharField(max_length=60, unique=True)
 
     def __str__(self):
         return self.name
@@ -20,9 +20,9 @@ class Store(models.Model):
         return self.name
 
 class Product(models.Model):
-    product_id = models.IntegerField(primary_key=True)
+    product_id = models.BigIntegerField(primary_key=True)
     product_name = models.CharField(max_length=200)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category_id = models.ManyToManyField(Category)
     link = models.TextField(null=True)
     description = models.TextField(null=True)
     nutriscore = models.CharField(max_length=2)
