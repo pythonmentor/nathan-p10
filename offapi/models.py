@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
+
 # This models create the database based on the OFF api data ready to be populate
 
 class Category(models.Model):
@@ -9,15 +10,17 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name_plural = "categories"
+
 
 class Store(models.Model):
     name = models.CharField(max_length=60, unique=True)
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     product_id = models.BigIntegerField(primary_key=True)
@@ -33,8 +36,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
-        
-# penser a le mettre (porductsaved) dans l'application qui va enregister une recherche 
+
+# penser a le mettre (porductsaved) dans l'application qui va enregister une recherche
+
 
 class ProductSaved(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

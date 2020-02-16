@@ -1,6 +1,7 @@
 import requests
 import html
 
+
 class ApiRetriever:
     """this class purpose is to retrieve the information from
         the OpenFoodFacts API it require one category argument"""
@@ -74,7 +75,7 @@ class DataCleaner:
                     elif key == "image_front_url":
                         value = value.replace('400.jpg', 'full.jpg')
                     elif key == "nutriments":
-                        pass                          
+                        pass
                     else:
                         value = value.replace('\n', ' ')
                         value = value.replace("_", "")

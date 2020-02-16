@@ -3,6 +3,7 @@ from ...models import Category
 import offapi.management.commands._api as offapi
 import offapi.management.commands._updatedb as update
 
+
 class Command(BaseCommand):
     help = 'call the OFF api and populate the DB'
 

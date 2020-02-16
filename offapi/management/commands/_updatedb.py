@@ -4,12 +4,11 @@ from ...models import Product, Category, Store
 from django.db import IntegrityError
 
 
-
 class Storedb:
     """this class purpose is to insert all data received to the database"""
 
     def insert_product(self, data, stores_list, categories_list):
-        """ this method insert the products' items into the 'Product' 
+        """ this method insert the products' items into the 'Product'
             table, it require the product list as a first argument
             and the store list as the second argument"""
         b = Product(product_name=data["product_name_fr"],
@@ -42,7 +41,7 @@ class Storedb:
 
     def storecleaner(self, data):
         """clean the string of stores received into a list and return it"""
-        
+
         store = data['stores']
         store_list = store.split(",")
         for c in range(len(store_list)):
@@ -53,7 +52,7 @@ class Storedb:
         store_list = self.categorycleaner(data)
         for i in store_list:
             try:
-                b = Category(name=i) #changer en category
+                b = Category(name=i)  # changer en category
                 b.save()
             except IntegrityError as e:
                 print(str(e))
@@ -61,11 +60,9 @@ class Storedb:
 
     def categorycleaner(self, data):
         """clean the string of stores received into a list and return it"""
-        
+
         store = data['categories']
         store_list = store.split(",")
         for c in range(len(store_list)):
             store_list[c] = store_list[c].strip()
         return store_list[3:4]
-
-

@@ -14,6 +14,7 @@ class CategoryTest(TestCase):
         self.assertTrue(isinstance(w, Category))
         self.assertEqual(w.__str__(), w.name)
 
+
 class StoreTest(TestCase):
 
     def create_store(self, name="only a test"):
@@ -24,16 +25,18 @@ class StoreTest(TestCase):
         self.assertTrue(isinstance(w, Store))
         self.assertEqual(w.__str__(), w.name)
 
+
 class ProductTest(TestCase):
 
     def create_Product(self, product_id=123456789, product_name='justeuntest'):
         category = CategoryTest().create_category()
-        return Product.objects.create(product_id=product_id, product_name=product_name, category_id=category) 
+        return Product.objects.create(product_id=product_id, product_name=product_name, category_id=category)
 
     def test_product_creation(self):
         w = self.create_Product()
         self.assertTrue(isinstance(w, Product))
         self.assertEqual(w.__str__(), w.product_name)
+
 
 class ProductSavedTest(TestCase):
 
