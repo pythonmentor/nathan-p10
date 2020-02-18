@@ -7,11 +7,7 @@ import offapi.management.commands._updatedb as update
 class Command(BaseCommand):
     help = 'call the OFF api and populate the DB'
 
-    # def add_arguments(self, parser):
-    #     parser.add_argument('poll_ids', nargs='+', type=int)
-
     def handle(self, *args, **options):
-        Category.objects.get_or_create(name="Boissons gazeuses")
         api = offapi.ApiRetriever()
         data = api.get_data('Produits à tartiner sucrés')
         for it in data:

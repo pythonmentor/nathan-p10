@@ -16,7 +16,8 @@ class TestViews(TestCase):
         """ test that a product match is saved as favorite """
         self.client.login(username='rien@g.com', password='1X<ISRUkw+tuK')
         resp = self.client.post('/search/5449000000996/3068320114453/')
-
+        # print(resp.context)
+        # self.assertEqual(resp.status_code, 200)
 
 
     def test_favorite_view(self):

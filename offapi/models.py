@@ -37,8 +37,6 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-# penser a le mettre (porductsaved) dans l'application qui va enregister une recherche
-
 
 class ProductSaved(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
