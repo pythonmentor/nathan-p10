@@ -5,7 +5,7 @@ from authentification.models import User
 
 # models test
 class CategoryTest(TestCase):
-
+    """ class that test the Category table of the model """
     def create_category(self, name="only a test"):
         return Category.objects.create(name=name)
 
@@ -16,7 +16,7 @@ class CategoryTest(TestCase):
 
 
 class StoreTest(TestCase):
-
+    """ class that test the Store table of the model """
     def create_store(self, name="only a test"):
         return Store.objects.create(name=name)
 
@@ -27,10 +27,9 @@ class StoreTest(TestCase):
 
 
 class ProductTest(TestCase):
-
-    def create_Product(self, product_id=123456789, product_name='justeuntest'):
-        category = CategoryTest().create_category()
-        return Product.objects.create(product_id=product_id, product_name=product_name, category_id=category)
+    """ class that test the Product table of the model """
+    def create_Product(self):
+        return Product.objects.create(product_id=124578, product_name='produit 1')
 
     def test_product_creation(self):
         w = self.create_Product()
@@ -39,11 +38,16 @@ class ProductTest(TestCase):
 
 
 class ProductSavedTest(TestCase):
+    """ class that test the Product-Saved table of the model """
 
-    def create_productsaved(self, a='testuser', b=124578, c=235689):
-        user = User.objects.create(username=a)
-        product_a = ProductTest().create_Product(product_id=124578)
-        product_b = ProductTest().create_Product(product_id=235689)
+    def setUp(self):
+        test_user1 = User.objects.create_user(username='rien@g.com', password='1X<ISRUkw+tuK')
+        test_user1.save()
+
+    def create_productsaved(self):
+        user = User.objects.get(username='rien@g.com')
+        product_a = Product.objects.create(product_id=124578, product_name='produit 1')
+        product_b = Product.objects.create(product_id=235689, product_name='produit 2')
         return ProductSaved.objects.create(user_id=user, product_id=product_a, sub_id=product_b)
 
     def test_productsaved_creation(self):
