@@ -11,7 +11,7 @@ def favorite(request, pk, pk2):
                      sub_id=Product.objects.get(product_id=pk2))
     b.save()
 
-    return redirect('/')  # doit pouvoir rediriger vers la page d'origine et non la page d'acceuil
+    return redirect('favorite')
 
 
 @login_required(login_url='login')

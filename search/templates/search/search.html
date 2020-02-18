@@ -40,16 +40,19 @@
           </div>
 
           {% if substitut %}
-          
+
           <div class="texte" style="text-align: center"><a href="/product/{{ prod.product_id }}">{{ prod.product_name }}
             </a>
-            <br><a href="{{ prod.product_id }}"><i class="far fa-save "></i>
-              Sauvegarder </a>
+            <br><a href=""></i>
+              <form action="{{ prod.product_id }}/" method="post">
+                {% csrf_token %}
+                <button type="submit"><i class="far fa-save "></i> Sauvegarder</button>
+              </form>
+            </a>
             {% else %}
 
-            <div class="texte" style="text-align: center"><a
-                href="{{ prod.product_id }}">{{ prod.product_name }} </a>
-            {% endif %}
+            <div class="texte" style="text-align: center"><a href="{{ prod.product_id }}">{{ prod.product_name }} </a>
+              {% endif %}
 
             </div>
           </div>
