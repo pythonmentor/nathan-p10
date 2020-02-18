@@ -26,7 +26,6 @@ from offapi import views as offapi_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog.index, name='home'),
-    path('index/', blog.home, name='db'),
     path('register/', auth.register, name='register'),
     path('profil/', auth.profil, name='profil'),
     path('login/', auth_views.LoginView.as_view(template_name='authentification/login.html'), name='login'),
