@@ -1,0 +1,13 @@
+language: python
+python:
+	- '3.6.9'
+before_script:
+	- pipenv install
+branches:
+	only:
+		- staging
+
+env : DJANGO_SETTINGS_MODULE="project8.settings.travis"
+
+script:
+	- python manage.py test
