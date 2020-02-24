@@ -1,19 +1,15 @@
 language: python
 
 python:
-	- '3.6.9'
+ - '3.7'
 
 before_script:
-	- pipenv install
-
-branches:
-	only:
-		- staging
+ - pipenv install
 
 env : DJANGO_SETTINGS_MODULE="project8.settings.travis"
 
 services:
-	- postgresql
+ - postgresql
 
 script:
-	- python manage.py test
+ - python manage.py test
