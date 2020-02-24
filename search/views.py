@@ -1,8 +1,10 @@
+import logging
 from django.shortcuts import render, redirect
 from .forms import SearchForm
 from offapi.models import Product, Category
 from django.views.generic import FormView, ListView
 
+logger = logging.getLogger(__name__)
 
 def search(request):
     query = request.GET.get('q')
@@ -10,7 +12,10 @@ def search(request):
     context = {'products': queryset,
                'title': 'Recherche',
                'big_title': 'voici le resultat de votre recherche'}
-
+    logger.info('New search', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
     return render(request, 'search/search.html', context)
 
 
