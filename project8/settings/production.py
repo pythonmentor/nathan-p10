@@ -1,6 +1,8 @@
 from . import *
+import logging 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration 
 
 DEBUG = False
 ALLOWED_HOSTS = ['204.48.26.176']
@@ -14,6 +16,11 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+sentry_logging = LoggingIntegration( 
+    level=logging.INFO, # Capture info and above as breadcrumbs 
+    event_level=logging.ERROR # Send errors as events 
+) 
 
 sentry_sdk.init(
     dsn="https://0b44cc663eaa4f35b107cbdd75719913@sentry.io/2827010",

@@ -4,6 +4,8 @@ from .forms import SearchForm
 from offapi.models import Product, Category
 from django.views.generic import FormView, ListView
 
+
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def search(request):
