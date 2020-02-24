@@ -6,7 +6,7 @@ python:
 before_script:
  - pipenv install
 
-env : DJANGO_SETTINGS_MODULE="project8.settings"
+env : DJANGO_SETTINGS_MODULE="project8.settings.travis"
 
 branches:
  only:
