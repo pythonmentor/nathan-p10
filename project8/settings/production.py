@@ -11,7 +11,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'projet8',
         'USER': 'nathansql',
-        'PASSWORD': 'nathan',
+        'PASSWORD': os.environ.get('SQLPWD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -24,9 +24,10 @@ sentry_logging = LoggingIntegration(
 
 sentry_sdk.init(
     dsn="https://0b44cc663eaa4f35b107cbdd75719913@sentry.io/2827010",
-    integrations=[DjangoIntegration()],
+    integrations=[DjangoIntegration(), sentry_logging],
 
     # If you wish to associate users to errors (assuming you are using
     # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
+    send_default_pii=False,
+    environment="production"
 )
