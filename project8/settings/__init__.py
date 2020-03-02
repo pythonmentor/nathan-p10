@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import logging 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration 
 
 
 
@@ -138,3 +142,18 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'authentification.User'
+
+sentry_logging = LoggingIntegration( 
+    level=logging.INFO, # Capture info and above as breadcrumbs 
+    event_level=logging.ERROR # Send errors as events 
+) 
+
+sentry_sdk.init(
+    dsn="https://0b44cc663eaa4f35b107cbdd75719913@sentry.io/2827010",
+    integrations=[DjangoIntegration(), sentry_logging],
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=False,
+    environment="staging"
+)

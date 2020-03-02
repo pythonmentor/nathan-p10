@@ -8,3 +8,5 @@ others
 staticfiles
 setup.cfg
 *.sqlite3
+*.docx
+other

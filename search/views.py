@@ -1,8 +1,12 @@
 import logging
+from sentry_sdk import capture_message
 from django.shortcuts import render, redirect
 from .forms import SearchForm
 from offapi.models import Product, Category
 from django.views.generic import FormView, ListView
+
+FORMAT = '%(asctime)-15s  %(message)s : %(request)-8s'
+logging.basicConfig(level=logging.INFO, format= FORMAT)
 
 logger = logging.getLogger(__name__)
 
@@ -12,10 +16,10 @@ def search(request):
     context = {'products': queryset,
                'title': 'Recherche',
                'big_title': 'voici le resultat de votre recherche'}
-    logger.info('New search', exc_info=True, extra={
-        # Optionally pass a request and we'll grab any information we can
-        'request': request,
-    })
+
+    capture_message("une recherche est faite", logger.info('New search', extra={
+        'request': query,
+    }))
     return render(request, 'search/search.html', context)
 
 
