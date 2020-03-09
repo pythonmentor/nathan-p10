@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
@@ -142,6 +142,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'authentification.User'
+
+MEDIA_ROOT=os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
 
 sentry_logging = LoggingIntegration( 
     level=logging.INFO, # Capture info and above as breadcrumbs 

@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from authentification.models import User
 
 
@@ -21,3 +21,16 @@ class TestViews(TestCase):
 
         self.assertEqual(resp.status_code, 302)
     
+    def test_register(self):
+        c = Client()
+        response = c.post('/register/', {'username': 'rie47n@g.com', 'password1': '1X<ISRUkw+tuK', 'password2': '1X<ISRUkw+tuK'}, follow=True)
+        user_login = self.client.login(username='rie47n@g.com', password='1X<ISRUkw+tuK')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(user_login)
+    
+    def test_profil(self):
+        pass
+
+    def test_change_password(self):
+        pass

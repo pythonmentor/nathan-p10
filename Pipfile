@@ -14,6 +14,7 @@ selenium = "*"
 gunicorn = "*"
 django-heroku = "*"
 sentry-sdk = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

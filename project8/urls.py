@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from blog import views as blog
 from authentification import views as auth
 from search import views as search_views
@@ -28,6 +30,7 @@ urlpatterns = [
     path('', blog.index, name='home'),
     path('register/', auth.register, name='register'),
     path('profil/', auth.profil, name='profil'),
+    path('profil/password/', auth.change_password, name='change_password'),
     path('login/', auth_views.LoginView.as_view(template_name='authentification/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='authentification/logout.html'), name='logout'),
     path('search/', search_views.search, name='research'),
@@ -40,3 +43,6 @@ urlpatterns = [
 
 admin.site.site_header = 'Project 8 Admin Panel'
 admin.site.site_title = 'Project 8'
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
